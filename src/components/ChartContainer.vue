@@ -1,6 +1,7 @@
 <template>
   <div v-if="isLoading">Loading...</div>
   <div v-else-if="error">Error: {{ error.message }}</div>
+  <DataInfoCard :highest-price="highestPrice" :lowest-price="lowestPrice" />
   <div v-if="data" class="!mt-10 sm:!mt-22 w-full">
     <LineChart :chart-data="data" />
   </div>
@@ -8,6 +9,7 @@
 
 <script setup lang="ts">
 import LineChart from "@/components/Chart.vue";
+import DataInfoCard from "@/components/DataInfoCard.vue";
 import { axiosFetch } from "@/hooks/fetch";
 import { PRICE_AREA, type IElectricity } from "@/types";
 import { formatDateForEndpoint, isValidDate } from "@/utils/date";
@@ -42,4 +44,14 @@ watch(
 );
 
 const { data, isLoading, error } = query;
+
+const highestPrice = computed(() => {
+  if (!data.value) return 0;
+  return Math.max(...data.value.map((price) => price.NOK_per_kWh * 100));
+});
+
+const lowestPrice = computed(() => {
+  if (!data.value) return 0;
+  return Math.min(...data.value.map((price) => price.NOK_per_kWh * 100));
+});
 </script>
