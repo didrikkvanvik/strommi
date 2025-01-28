@@ -23,3 +23,10 @@ Strømmi er en enkel side for å se prisen på strøm i Norge.
 npm install
 npm run dev
 ```
+
+Åpne [http://localhost:5173](http://localhost:5173) i nettleseren for å se applikasjonen kjøre.
+
+
+## Se appen live
+
+Applikasjonen er enkelt hostet hos Netlify [strommi.netlify.app](https://strommi.netlify.app).
