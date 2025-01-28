@@ -63,8 +63,8 @@
         class="list-disc text-white text-xl md:text-xl space-y-2 pl-6"
       >
         <li>
-          Strømstøtten er ikke trukket fra strømprisen. Selv ikke etter
-          1. september 2023, hvor strømstøtten beregnes time for time.
+          Strømstøtten er ikke trukket fra strømprisen. Selv ikke etter 1.
+          september 2023, hvor strømstøtten beregnes time for time.
         </li>
         <li>
           Historiske data kan kun hentes tilbake til og med 1. desember 2021.
@@ -75,8 +75,8 @@
         </li>
         <li>Morgendagens strømpris kommer tidligst kl 13 dagen før.</li>
         <li>
-          Strømprisene hentes fra ENTSO-E i euro, og konverterer selv til
-          norske kroner med siste vekslingskurs fra Norges Bank.
+          Strømprisene hentes fra ENTSO-E i euro, og konverterer selv til norske
+          kroner med siste vekslingskurs fra Norges Bank.
         </li>
         <li>
           Prisene kan derfor avvike noe fra offisielle priser i norske kroner du

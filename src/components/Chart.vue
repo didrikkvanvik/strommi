@@ -72,7 +72,9 @@ export default {
           y: {
             beginAtZero: true,
             ticks: {
-              callback: (value: number) => `${value} øre`,
+              callback: function (tickValue: number | string) {
+                return `${tickValue} øre`;
+              },
               font: {
                 size: 16,
               },
