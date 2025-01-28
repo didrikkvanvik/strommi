@@ -46,12 +46,24 @@ watch(
 const { data, isLoading, error } = query;
 
 const highestPrice = computed(() => {
-  if (!data.value) return 0;
-  return Math.max(...data.value.map((price) => price.NOK_per_kWh * 100));
+  if (!data.value) return { time: new Date(), value: 0 };
+  const prices = data.value.map((price) => ({
+    time: new Date(price.time_start),
+    value: price.NOK_per_kWh * 100
+  }));
+  return prices.reduce((max, current) => 
+    current.value > max.value ? current : max
+  , prices[0]);
 });
 
 const lowestPrice = computed(() => {
-  if (!data.value) return 0;
-  return Math.min(...data.value.map((price) => price.NOK_per_kWh * 100));
+  if (!data.value) return { time: new Date(), value: 0 };
+  const prices = data.value.map((price) => ({
+    time: new Date(price.time_start),
+    value: price.NOK_per_kWh * 100
+  }));
+  return prices.reduce((min, current) => 
+    current.value < min.value ? current : min
+  , prices[0]);
 });
 </script>

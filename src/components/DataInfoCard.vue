@@ -1,29 +1,9 @@
 <template>
   <div
-    class="grid grid-cols-2 w-full sm:w-[20rem] gap-4 !mt-4 sm:!mt-6 bg-black p-4 rounded-lg"
+    class="grid grid-cols-2 gap-4 !mt-4 sm:!mt-6 bg-black p-4 rounded-lg max-w-[34rem]"
   >
-    <p class="text-white text-xl md:text-xl">
-      <span class="!font-bold">Høyeste pris: </span>
-      <span
-        :class="{
-          'text-green-500': highestPrice < 100,
-          'text-yellow-500': highestPrice > 100,
-          'text-red-500': highestPrice > 300,
-        }"
-        >{{ highestPrice.toFixed(2) }} kr/kWh</span
-      >
-    </p>
-    <p class="text-white text-xl md:text-xl">
-      <span class="!font-bold">Laveste pris: </span>
-      <span
-        :class="{
-          'text-green-500': lowestPrice < 100,
-          'text-yellow-500': lowestPrice > 100,
-          'text-red-500': lowestPrice > 300,
-        }"
-        >{{ lowestPrice.toFixed(2) }} kr/kWh</span
-      >
-    </p>
+      <PriceCard :price="highestPrice" title="Høyeste" />
+      <PriceCard :price="lowestPrice" title="Laveste" />
   </div>
 
   <div
@@ -90,9 +70,10 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
+import PriceCard from "@/components/PriceCard.vue";
 defineProps<{
-  highestPrice: number;
-  lowestPrice: number;
+  highestPrice: { time: Date; value: number };
+  lowestPrice: { time: Date; value: number };
 }>();
 
 const isOpen = ref(false);
