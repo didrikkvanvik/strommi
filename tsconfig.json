@@ -9,6 +9,16 @@
     }
   ],
   "compilerOptions": {
-    "types": ["@tanstack/vue-query"]
+    "types": ["@tanstack/vue-query"],
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "strict": true,
+    "noImplicitAny": false,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
   }
 }

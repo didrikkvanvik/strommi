@@ -1,5 +1,7 @@
 <template>
-  <header class="flex items-center justify-center gap-4 sm:gap-4">
+  <header
+    class="flex items-center justify-center gap-4 sm:gap-4 mt-12 sm:!mt-12"
+  >
     <img
       alt="Vue logo"
       class="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20"

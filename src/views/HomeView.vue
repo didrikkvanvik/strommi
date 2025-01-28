@@ -1,21 +1,30 @@
 <script setup lang="ts">
-import LineChart from "@/components/Chart.vue";
-import { PRICE_AREA, useGetElectricity } from "@/hooks/useGetElectricty";
+import ChartContainer from "@/components/ChartContainer.vue";
+import Datepicker from "@vuepic/vue-datepicker";
+import { ref } from "vue";
 
-const { data, isLoading, error } = useGetElectricity({
-  year: new Date().getFullYear(),
-  month: new Date().getMonth() + 1,
-  day: new Date().getDate(),
-  priceArea: PRICE_AREA.SOUTH_NORWAY,
-});
+const date = ref(new Date());
+const minDate = new Date("2021-12-01");
+const now = new Date();
+const maxDate = new Date();
+
+if (now.getHours() >= 13) {
+  maxDate.setDate(maxDate.getDate() + 1);
+}
 </script>
 
 <template>
   <main class="w-full flex-1 h-full max-w-[100rem] mx-auto">
-    <div v-if="isLoading">Loading...</div>
-    <div v-else-if="error">Error: {{ error.message }}</div>
-    <div v-if="data" class="w-full h-full !mt-10 sm:!mt-22">
-      <LineChart :chart-data="data" />
+    <div class="flex flex-col w-full h-full !mt-10 sm:!mt-22 items-center">
+      <Datepicker
+        v-model="date"
+        :enable-time-picker="false"
+        :min-date="minDate"
+        :max-date="maxDate"
+        :day-picker="true"
+        class="max-w-[14rem] self-center"
+      />
+      <ChartContainer :date="date" />
     </div>
   </main>
 </template>

@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts">
-import type { IElectricity } from "@/hooks/useGetElectricty";
+import type { IElectricity } from "@/types";
 import { formatDateHours } from "@/utils/date";
 import {
   CategoryScale,
@@ -51,6 +51,9 @@ export default {
               label: function (context: { parsed: { y: number } }) {
                 return `Pris: ${context.parsed.y.toFixed(1)} øre/kWh`;
               },
+              title: function (context: Array<{ label: string }>) {
+                return `Kl ${context[0].label}`;
+              },
             },
             padding: 12,
             borderWidth: 1,
@@ -79,7 +82,7 @@ export default {
               text: "Pris (øre/kWh)",
               font: {
                 size: 18,
-                weight: "bold",
+                weight: 600,
               },
             },
           },
@@ -94,7 +97,7 @@ export default {
               text: "Tidspunkt",
               font: {
                 size: 18,
-                weight: "bold",
+                weight: 600,
               },
             },
           },
