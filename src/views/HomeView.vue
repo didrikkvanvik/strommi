@@ -14,15 +14,13 @@ if (now.getHours() >= 13) {
 </script>
 
 <template>
-  <main
-    class="w-full flex-1 max-w-[100rem] mx-auto flex items-center flex-col"
-  >
+  <main class="w-full flex-1 mx-auto flex items-center flex-col">
     <p
-      class="font-medium text-green-500 text-xl md:text-xl self-center italic !mt-8 text-center"
+      class="font-medium text-green-500 text-xl md:text-xl self-center italic !mt-4 sm:!mt-8 text-center"
     >
       Strømmi er en enkel side for å se prisen på strøm i Norge.
     </p>
-    <div class="flex flex-col w-full !mt-10 items-center">
+    <div class="flex flex-col w-full !mt-4 sm:!mt-10 items-center">
       <Datepicker
         v-model="date"
         :enable-time-picker="false"

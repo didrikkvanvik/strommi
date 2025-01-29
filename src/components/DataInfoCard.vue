@@ -1,21 +1,20 @@
 <template>
-  <div
-    class="grid grid-cols-2 gap-4 !mt-4 sm:!mt-6 bg-black p-4 rounded-lg max-w-[34rem]"
-  >
-      <PriceCard :price="highestPrice" title="Høyeste" />
-      <PriceCard :price="lowestPrice" title="Laveste" />
+  <div class="grid grid-cols-3 gap-4 !mt-4 sm:!mt-6 bg-black p-4 rounded-lg">
+    <PriceCard :price="nowPrice" title="Nå" />
+    <PriceCard :price="highestPrice" title="Høyeste" />
+    <PriceCard :price="lowestPrice" title="Laveste" />
   </div>
 
   <div
-    class="flex flex-col items-center justify-center gap-4 !mt-4 sm:!mt-6 bg-black p-4 rounded-lg"
+    class="flex flex-col items-center justify-center gap-4 !mt-4 sm:!mt-6 bg-black p-2 sm:p-4 rounded-lg"
   >
     <button
       @click="isOpen = !isOpen"
       class="flex items-center gap-2 text-white text-xl md:text-xl cursor-pointer hover:text-green-500 transition-colors"
     >
-      <span>Greit å vite</span>
+      <span class="text-sm md:text-xl">Greit å vite</span>
       <svg
-        class="w-5 h-5 transition-transform"
+        class="w-4 h-4 sm:w-5 sm:h-5 transition-transform"
         :class="{ 'rotate-180': isOpen }"
         viewBox="0 0 24 24"
         fill="none"
@@ -40,7 +39,7 @@
     >
       <ul
         v-show="isOpen"
-        class="list-disc text-white text-xl md:text-xl space-y-2 pl-6"
+        class="list-disc text-white text-sm md:text-xl space-y-2 pl-6"
       >
         <li>
           Strømstøtten er ikke trukket fra strømprisen. Selv ikke etter 1.
@@ -69,11 +68,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
 import PriceCard from "@/components/PriceCard.vue";
+import { ref } from "vue";
+
 defineProps<{
   highestPrice: { time: Date; value: number };
   lowestPrice: { time: Date; value: number };
+  nowPrice: { time: Date; value: number };
 }>();
 
 const isOpen = ref(false);
